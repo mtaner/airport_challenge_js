@@ -1,5 +1,6 @@
-function Airport() {
-  this.weather = new Weather();
+function Airport(weather) {
+  this.weather = weather;
+	this.terminal = [];
 };
 
 Airport.prototype = {
@@ -8,6 +9,7 @@ Airport.prototype = {
       return 'Weather is too stormy!';
     }
     else {
+			this.terminal.push(plane);
       return 'Plane has landed';
     };
   },
