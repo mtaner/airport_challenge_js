@@ -22,7 +22,11 @@ describe('Airport', function(){
         return true;
       });
 
-      expect(airport.land(plane)).toEqual('Weather is too stormy!');
+			var land = function() {
+				airport.land(plane)
+			};
+
+			expect(land).toThrowError('Weather is too stormy!');
     });
 
 		it('adds the plane to the terminal', function(){
@@ -42,7 +46,11 @@ describe('Airport', function(){
         airport.land(plane);
       };
 
-      expect(airport.land(plane)).toEqual("Terminal is full");
+			var land = function() {
+				airport.land(plane)
+			};
+
+      expect(land).toThrowError("Terminal is full");
     });
   });
 
@@ -64,7 +72,12 @@ describe('Airport', function(){
 				weather.isStormy.and.callFake(function(){
 					return true;
 				});
-				expect(airport.takeOff(plane)).toEqual('Weather is too stormy!');
+
+				var takeOff = function() {
+					airport.takeOff(plane)
+				};
+
+				expect(takeOff).toThrowError('Weather is too stormy!');
 			});
 		});
 
@@ -73,7 +86,12 @@ describe('Airport', function(){
 				weather.isStormy.and.callFake(function(){
 					return false;
 				});
-				expect(airport.takeOff(plane)).toEqual('404: Plane not found!');
+
+				var takeOff = function() {
+					airport.takeOff(plane)
+				};
+
+				expect(takeOff).toThrowError('404: Plane not found!');
 			});
 		});
 	});

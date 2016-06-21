@@ -3,16 +3,12 @@ describe('Weather', function() {
 
 	describe('#isStormy', function() {
 		it('should be stormy', function() {
-			Math.random = function() {
-				return 0.1;
-			};
+			spyOn(Math, 'random').and.returnValue(0.1);
 			expect(weather.isStormy()).toBe(true);
 		});
 
 		it('should not be stormy', function() {
-			Math.random = function() {
-				return 0.9;
-			};
+			spyOn(Math, 'random').and.returnValue(0.9);
 			expect(weather.isStormy()).toBe(false);
 		});
 	});

@@ -7,11 +7,11 @@ function Airport(weather, capacity) {
 Airport.prototype = {
   land: function(plane){
     if(this.terminal.length === this.capacity) {
-			return 'Terminal is full';
+			throw new TypeError('Terminal is full');
 		};
 
     if (this._stormStatus()){
-      return 'Weather is too stormy!';
+      throw new TypeError('Weather is too stormy!');
     }
     else {
 			this.terminal.push(plane);
@@ -22,11 +22,11 @@ Airport.prototype = {
 
 	takeOff: function(plane){
 		if(!this.terminal.includes(plane)) {
-			return '404: Plane not found!';
+			throw new TypeError('404: Plane not found!');
 		};
 
 		if (this._stormStatus()){
-			return 'Weather is too stormy!';
+			throw new TypeError('Weather is too stormy!');
 		}
 		else {
 			var index = this.terminal.indexOf(plane);
