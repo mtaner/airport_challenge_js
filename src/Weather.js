@@ -1,9 +1,6 @@
-function Weather() {
-
-};
+function Weather() {};
 
 Weather.prototype = {
-
 	isStormy: function() {
 		return this._outlookSample();
 	},
