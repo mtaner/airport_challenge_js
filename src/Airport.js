@@ -14,7 +14,24 @@ Airport.prototype = {
     };
   },
 
+	takeOff: function(plane){
+		if(!this.terminal.includes(plane)) {
+			return '404: Plane not found!';
+		};
+
+		if (this._stormStatus()){
+			return 'Weather is too stormy!';
+		}
+		else {
+			var index = this.terminal.indexOf(plane);
+			delete this.terminal[index];
+		};
+	},
+
   _stormStatus: function(){
     return this.weather.isStormy();
   }
 };
+
+
+// check the terminal and the weather and depart plane accordingly
