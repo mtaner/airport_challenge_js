@@ -1,10 +1,15 @@
-function Airport(weather) {
+function Airport(weather, capacity) {
   this.weather = weather;
 	this.terminal = [];
+  this.capacity = capacity || 20;
 };
 
 Airport.prototype = {
   land: function(plane){
+    if(this.terminal.length === this.capacity) {
+			return 'Terminal is full';
+		};
+
     if (this._stormStatus()){
       return 'Weather is too stormy!';
     }

@@ -1,10 +1,11 @@
 describe('Airport', function(){
+  var capacity = 2;
   var weather = jasmine.createSpyObj('weather', ['isStormy']);
   var airport;
   var plane = jasmine.createSpyObj('plane', ['land', 'takeOff']);
 
 	beforeEach(function(){
-	airport	= new Airport(weather);
+	airport	= new Airport(weather, capacity);
 	});
 
   describe('#land', function(){
@@ -31,6 +32,18 @@ describe('Airport', function(){
 			airport.land(plane);
 			expect(airport.terminal.pop()).toEqual(plane);
 		});
+
+    it('doesn\'t land a plane when the terminal is full', function(){
+      weather.isStormy.and.callFake(function(){
+        return false;
+      });
+
+      for(var i = 0; i < capacity; i++) {
+        airport.land(plane);
+      };
+
+      expect(airport.land(plane)).toEqual("Terminal is full");
+    });
   });
 
 	describe('#takeOff', function(){
