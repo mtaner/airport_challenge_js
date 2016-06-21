@@ -10,6 +10,7 @@ Airport.prototype = {
     }
     else {
 			this.terminal.push(plane);
+      plane.land();
       return 'Plane has landed';
     };
   },
@@ -24,6 +25,7 @@ Airport.prototype = {
 		}
 		else {
 			var index = this.terminal.indexOf(plane);
+      plane.takeOff();
 			delete this.terminal[index];
 		};
 	},

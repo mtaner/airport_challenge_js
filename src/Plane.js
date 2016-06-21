@@ -1,13 +1,13 @@
 function Plane(){
-  this.planeStatus = false;
+  this.hasLanded = false;
 };
 
 Plane.prototype = {
-  hasLanded: function(){
-    return this.planeStatus;
+  land: function(){
+    this.hasLanded = true;
   },
 
-  land: function(){
-    this.planeStatus = true;
+  takeOff: function(){
+    this.hasLanded = false;
   }
 }
