@@ -7,11 +7,9 @@ describe('Weather', function() {
 
 		it('should be stormy', function() {
 
-				Math = {
-					random: function() {
+				Math.random = function() {
 						return 0.1;
-					}
-				};
+					};
 
 			expect(weather.isStormy()).toBe(true);
 
@@ -19,11 +17,9 @@ describe('Weather', function() {
 
 		it('should not be stormy', function() {
 
-			Math = {
-				random: function() {
+			Math.random = function() {
 					return 0.9;
-				}
-			};
+				};
 
 			expect(weather.isStormy()).toBe(false);
 
